@@ -1,13 +1,12 @@
-
+/*
+* Adam Marshall
+* GAME 2303
+* October 12, 2023
+* TicTacToe
+*/
 #include <iostream>
 
 using namespace std;
-
-/*
- |  0,0  |  |  1,0  |  |  2,0  |
- |  0,1  |  |  1,1  |  |  2,1  |
- |  0,2  |  |  1,2  |  |  2,2  |
-*/
 
 class TicTacToe
 {
@@ -179,25 +178,136 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe& t)
 
     // handle computer's move
 
-    int rowChoice = 0;
     int colChoice = 0;
+    int rowChoice = 0;
 
-    // block top left
-    if (t.board[1][0] == t.PLAYER_ONE && t.board[2][0] == t.PLAYER_ONE && t.board[0][0] == t.EMPTY || t.board[0][1] == t.PLAYER_ONE && t.board[0][2] == t.PLAYER_ONE && t.board[0][0] == t.EMPTY || t.board[1][1] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[0][0] == t.EMPTY)
+    // win top left 
+    if (t.board[1][0] == t.PLAYER_TWO && t.board[2][0] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY || t.board[0][1] == t.PLAYER_TWO && t.board[0][2] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY || t.board[1][1] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY)
     {
         t.board[0][0] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // win top middle
+    else if (t.board[0][0] == t.PLAYER_TWO && t.board[0][2] == t.PLAYER_TWO && t.board[0][1] == t.EMPTY || t.board[1][1] == t.PLAYER_TWO && t.board[2][1] == t.PLAYER_TWO && t.board[0][1] == t.EMPTY)
+    {
+        t.board[0][1] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // win top right
+    else if (t.board[0][0] == t.PLAYER_TWO && t.board[0][1] == t.PLAYER_TWO && t.board[0][2] == t.EMPTY || t.board[1][2] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[0][2] == t.EMPTY || t.board[2][0] == t.PLAYER_TWO && t.board[1][1] == t.PLAYER_TWO && t.board[0][2] == t.EMPTY)
+    {
+        t.board[0][2] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // win middle left
+    else if (t.board[0][0] == t.PLAYER_TWO && t.board[2][0] == t.PLAYER_TWO && t.board[1][0] == t.EMPTY || t.board[1][1] == t.PLAYER_TWO && t.board[1][2] == t.PLAYER_TWO && t.board[1][0] == t.EMPTY)
+    {
+        t.board[1][0] = t.PLAYER_TWO;
+
+        return false;
+    }
+
+    // win middle right
+    else if (t.board[0][2] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[1][2] == t.EMPTY || t.board[1][0] == t.PLAYER_TWO && t.board[1][1] == t.PLAYER_TWO && t.board[1][2] == t.EMPTY)
+    {
+        t.board[1][2] = t.PLAYER_TWO;
+
+        return false;
+    }
+
+    // win bottom left
+    else if (t.board[0][0] == t.PLAYER_TWO && t.board[1][0] == t.PLAYER_TWO && t.board[2][0] == t.EMPTY || t.board[2][1] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[2][0] == t.EMPTY || t.board[1][1] == t.PLAYER_TWO && t.board[0][2] == t.PLAYER_TWO && t.board[2][0] == t.EMPTY)
+    {
+        t.board[2][0] = t.PLAYER_TWO;
+
+        return false;
+    }
+
+    // win bottom middle
+    else if (t.board[0][1] == t.PLAYER_TWO && t.board[1][1] == t.PLAYER_TWO && t.board[2][1] == t.EMPTY || t.board[2][0] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[2][1] == t.EMPTY)
+    {
+        t.board[2][1] = t.PLAYER_TWO;
+
+        return false;
+    }
+
+    // win bottom right
+    else if (t.board[0][2] == t.PLAYER_ONE && t.board[1][2] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY || t.board[2][0] == t.PLAYER_ONE && t.board[2][1] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY || t.board[0][0] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY)
+    {
+        t.board[2][2] = t.PLAYER_TWO;
+
+        return false;
+    }
+
+    // block top left
+    else if (t.board[1][0] == t.PLAYER_TWO && t.board[2][0] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY || t.board[0][1] == t.PLAYER_TWO && t.board[0][2] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY || t.board[1][1] == t.PLAYER_TWO && t.board[2][2] == t.PLAYER_TWO && t.board[0][0] == t.EMPTY)
+    {
+        t.board[0][0] = t.PLAYER_TWO;
+
+        return false;
     }
 
     // block top middle
+    else if (t.board[0][0] == t.PLAYER_ONE && t.board[0][2] == t.PLAYER_ONE && t.board[0][1] == t.EMPTY || t.board[1][1] == t.PLAYER_ONE && t.board[2][1] == t.PLAYER_ONE && t.board[0][1] == t.EMPTY)
+    {
+        t.board[0][1] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // block top right
+    else if (t.board[0][0] == t.PLAYER_ONE && t.board[0][1] == t.PLAYER_ONE && t.board[0][2] == t.EMPTY || t.board[1][2] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[0][2] == t.EMPTY || t.board[2][0] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[0][2] == t.EMPTY)
+    {
+        t.board[0][2] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // block middle left
     else if (t.board[0][0] == t.PLAYER_ONE && t.board[2][0] == t.PLAYER_ONE && t.board[1][0] == t.EMPTY || t.board[1][1] == t.PLAYER_ONE && t.board[1][2] == t.PLAYER_ONE && t.board[1][0] == t.EMPTY)
     {
         t.board[1][0] = t.PLAYER_TWO;
-    }//doesn't run___________________________________
+        
+        return false;
+    }
 
-    else if (t.board[0][0] == t.PLAYER_ONE && t.board[1][0] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY || t.board[2][1] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY || t.board[0][2] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY)
+    // block middle right
+    else if (t.board[0][2] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[1][2] == t.EMPTY || t.board[1][0] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[1][2] == t.EMPTY)
+    {
+        t.board[1][2] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // block bottom left
+    else if (t.board[0][0] == t.PLAYER_ONE && t.board[1][0] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY || t.board[2][1] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY || t.board[1][1] == t.PLAYER_ONE && t.board[0][2] == t.PLAYER_ONE && t.board[2][0] == t.EMPTY)
     {
         t.board[2][0] = t.PLAYER_TWO;
-    }//doesn't run___________________________________
+        
+        return false;
+    }
+
+    // block bottom middle
+    else if (t.board[0][1] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[2][1] == t.EMPTY || t.board[2][0] == t.PLAYER_ONE && t.board[2][2] == t.PLAYER_ONE && t.board[2][1] == t.EMPTY)
+    {
+        t.board[2][1] = t.PLAYER_TWO;
+        
+        return false;
+    }
+
+    // block bottom right
+    else if (t.board[0][2] == t.PLAYER_ONE && t.board[1][2] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY || t.board[2][0] == t.PLAYER_ONE && t.board[2][1] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY || t.board[0][0] == t.PLAYER_ONE && t.board[1][1] == t.PLAYER_ONE && t.board[2][2] == t.EMPTY)
+    {
+        t.board[2][2] = t.PLAYER_TWO;
+        
+        return false;
+    }
     
     // computer take middle if empty
     else if (t.board[1][1] == t.EMPTY)
@@ -211,14 +321,14 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe& t)
         t.board[0][0] = t.PLAYER_TWO;
     }
 
-    else if (t.board[2][0] == t.EMPTY)
-    {
-        t.board[2][0] = t.PLAYER_TWO;
-    }
-
     else if (t.board[0][2] == t.EMPTY)
     {
         t.board[0][2] = t.PLAYER_TWO;
+    }
+
+    else if (t.board[2][0] == t.EMPTY)
+    {
+        t.board[2][0] = t.PLAYER_TWO;
     }
 
     else if (t.board[2][2] == t.EMPTY)
@@ -233,20 +343,20 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe& t)
             // choose at random until we find a space that's empty
             do {
 
-                rowChoice = rand() % ((t.getSize() - 0) + 1) + 0;
-
-            } while (rowChoice > t.getSize() || rowChoice < 0);
-
-            do {
-
                 colChoice = rand() % ((t.getSize() - 0) + 1) + 0;
 
             } while (colChoice > t.getSize() || colChoice < 0);
 
+            do {
 
-            if (t.board[rowChoice][colChoice] == t.EMPTY)
+                rowChoice = rand() % ((t.getSize() - 0) + 1) + 0;
+
+            } while (rowChoice > t.getSize() || rowChoice < 0);
+
+
+            if (t.board[colChoice][rowChoice] == t.EMPTY)
             {
-                t.board[rowChoice][colChoice] = (char)computer;
+                t.board[colChoice][rowChoice] = (char)computer;
 
                 return false;
             }
@@ -257,7 +367,7 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe& t)
             }
 
 
-        } while (t.board[rowChoice][colChoice] != t.EMPTY);
+        } while (t.board[colChoice][rowChoice] != t.EMPTY);
     }
     // move complete
     return false;
